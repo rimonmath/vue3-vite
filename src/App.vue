@@ -3,63 +3,24 @@
     <h2>{{ msg }}</h2>
   </header>
   <div>
-    <product-card
-      v-for="product in products"
-      :key="product.name"
-      :product="product"
-      @buy-now-clicked="buyNow"
-      @add-to-cart-clicked="addToCart"
-      @toggle-favourite="handleToggle"
-    >
-    </product-card>
+    <p>My Rating: {{ myRating }}</p>
+    <the-rating v-model="myRating"></the-rating>
   </div>
 </template>
 
 <script>
-import ProductCard from "./ProductCard.vue";
+import TheRating from "./TheRating.vue";
 
 export default {
   data() {
     return {
       msg: "Vue3 Bangla Tutorial",
-      products: [
-        {
-          name: "Apple iPhone 12 Pro",
-          thumbnail:
-            "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-12-pro--.jpg",
-          price: "৳161999",
-          addedToFavourite: true
-        },
-        {
-          name: "Walton Primo R8",
-          thumbnail:
-            "https://www.mobiledokan.com/wp-content/uploads/2021/05/Walton-Primo-R8-image.jpg",
-          price: "৳10690",
-          addedToFavourite: false
-        },
-        {
-          name: "Oppo A15",
-          thumbnail:
-            "https://www.mobiledokan.com/wp-content/uploads/2021/01/Oppo-A15.jpg",
-          price: "৳10990",
-          addedToFavourite: true
-        }
-      ]
+      myRating: 4
     };
   },
-  methods: {
-    buyNow(product) {
-      console.log(product);
-    },
-    addToCart() {
-      console.log("Adding...");
-    },
-    handleToggle(product) {
-      product.addedToFavourite = !product.addedToFavourite;
-    }
-  },
+  methods: {},
   components: {
-    ProductCard
+    TheRating
   }
 };
 </script>
