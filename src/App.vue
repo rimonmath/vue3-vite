@@ -2,25 +2,44 @@
   <header>
     <h2>{{ msg }}</h2>
   </header>
-  <div>
-    <p>My Rating: {{ myRating }}</p>
-    <the-rating v-model="myRating"></the-rating>
+
+  <div class="container">
+    <h3>Credit Card Input</h3>
+    <credit-card
+      v-model:nameOnCard="nameOnCard"
+      v-model:cardNumber="cardNumber"
+      v-model:expiry="expiry"
+      v-model:cvv="cvv"
+    ></credit-card>
+    <br />
+    <hr />
+    <br />
+
+    <p>
+      Name: {{ nameOnCard }} <br />
+      Card Number: {{ cardNumber }} <br />
+      Expiry: {{ expiry }} <br />
+      CVV: {{ cvv }} <br />
+    </p>
   </div>
 </template>
 
 <script>
-import TheRating from "./TheRating.vue";
+import CreditCard from "./CreditCard.vue";
 
 export default {
   data() {
     return {
       msg: "Vue3 Bangla Tutorial",
-      myRating: 4
+      nameOnCard: "Mr.",
+      cardNumber: "",
+      expiry: "",
+      cvv: ""
     };
   },
   methods: {},
   components: {
-    TheRating
+    CreditCard
   }
 };
 </script>
@@ -50,6 +69,10 @@ header {
 
 header h2 {
   text-align: center;
+}
+
+.container {
+  padding: 22px;
 }
 
 button {
