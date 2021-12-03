@@ -4,42 +4,39 @@
   </header>
 
   <div class="container">
-    <h3>Credit Card Input</h3>
-    <credit-card
-      v-model:nameOnCard="nameOnCard"
-      v-model:cardNumber="cardNumber"
-      v-model:expiry="expiry"
-      v-model:cvv="cvv"
-    ></credit-card>
+    <the-comment
+      v-model="myComment"
+      buttonText="Continue"
+      placeholder="Enter Your comment.."
+      @click="handleClick"
+    ></the-comment>
     <br />
     <hr />
     <br />
 
     <p>
-      Name: {{ nameOnCard }} <br />
-      Card Number: {{ cardNumber }} <br />
-      Expiry: {{ expiry }} <br />
-      CVV: {{ cvv }} <br />
+      {{ myComment }}
     </p>
   </div>
 </template>
 
 <script>
-import CreditCard from "./CreditCard.vue";
+import TheComment from "./TheComment.vue";
 
 export default {
   data() {
     return {
       msg: "Vue3 Bangla Tutorial",
-      nameOnCard: "Mr.",
-      cardNumber: "",
-      expiry: "",
-      cvv: ""
+      myComment: ""
     };
   },
-  methods: {},
+  methods: {
+    handleClick() {
+      console.log("Clicked");
+    }
+  },
   components: {
-    CreditCard
+    TheComment
   }
 };
 </script>
@@ -79,5 +76,9 @@ button {
   margin: 5px;
   padding: 5px 11px;
   cursor: pointer;
+}
+
+.shadowed {
+  box-shadow: 0 0 3px 2px #111;
 }
 </style>
