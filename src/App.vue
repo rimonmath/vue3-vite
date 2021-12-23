@@ -4,11 +4,14 @@
   </header>
 
   <div class="container">
+    <button @click="hide = true">Hide</button>
+
     <the-comment
       v-model="myComment"
       buttonText="Continue"
       placeholder="Enter Your comment.."
       @click="handleClick"
+      v-if="!hide"
     ></the-comment>
     <br />
     <hr />
@@ -27,7 +30,8 @@ export default {
   data() {
     return {
       msg: "Vue3 Bangla Tutorial",
-      myComment: ""
+      myComment: "",
+      hide: false
     };
   },
   methods: {
@@ -38,6 +42,25 @@ export default {
   components: {
     TheComment
   }
+
+  // beforeCreate() {
+  //   console.log("befreCreate");
+  // },
+  // created() {
+  //   console.log("created");
+  // },
+  // beforeMount() {
+  //   console.log("beforeMount");
+  // },
+  // mounted() {
+  //   console.log("mounted");
+  // },
+  // beforeUpdate() {
+  //   console.log("beforeUpdate");
+  // },
+  // updated() {
+  //   console.log("updated");
+  // }
 };
 </script>
 

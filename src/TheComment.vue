@@ -20,14 +20,39 @@ export default {
       default: "OK"
     }
   },
+  inheritAttrs: false,
   created() {
-    console.log(this.$attrs);
+    // console.log(this.$attrs);
   },
 
   methods: {
     handleInput(e) {
       this.$emit("update:modelValue", e.target.value);
     }
+  },
+  beforeCreate() {
+    console.log("befreCreate");
+  },
+  created() {
+    console.log("created");
+  },
+  beforeMount() {
+    console.log("beforeMount");
+  },
+  mounted() {
+    console.log("mounted");
+  },
+  beforeUpdate() {
+    console.log("beforeUpdate");
+  },
+  updated() {
+    console.log("updated");
+  },
+  beforeUnmount() {
+    console.log("beforeUnmount");
+  },
+  unmounted() {
+    console.log("unmounted");
   }
 };
 </script>
