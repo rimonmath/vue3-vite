@@ -3,7 +3,7 @@
     <textarea :value="modelValue" @input="handleInput" v-bind="$attrs" />
 
     <div class="text-right">
-      <button>{{ buttonText }}</button>
+      <button @click="$emit('continueClick')">{{ buttonText }}</button>
     </div>
   </div>
 </template>
@@ -29,31 +29,31 @@ export default {
     handleInput(e) {
       this.$emit("update:modelValue", e.target.value);
     }
-  },
-  beforeCreate() {
-    console.log("befreCreate");
-  },
-  created() {
-    console.log("created");
-  },
-  beforeMount() {
-    console.log("beforeMount");
-  },
-  mounted() {
-    console.log("mounted");
-  },
-  beforeUpdate() {
-    console.log("beforeUpdate");
-  },
-  updated() {
-    console.log("updated");
-  },
-  beforeUnmount() {
-    console.log("beforeUnmount");
-  },
-  unmounted() {
-    console.log("unmounted");
   }
+  // beforeCreate() {
+  //   console.log("befreCreate");
+  // },
+  // created() {
+  //   console.log("created");
+  // },
+  // beforeMount() {
+  //   console.log("beforeMount");
+  // },
+  // mounted() {
+  //   console.log("mounted");
+  // },
+  // beforeUpdate() {
+  //   console.log("beforeUpdate");
+  // },
+  // updated() {
+  //   console.log("updated");
+  // },
+  // beforeUnmount() {
+  //   console.log("beforeUnmount");
+  // },
+  // unmounted() {
+  //   console.log("unmounted");
+  // }
 };
 </script>
 

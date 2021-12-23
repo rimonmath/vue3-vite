@@ -1,13 +1,14 @@
 <template>
-  <teleport to="#modals">
+  <teleport to="#dialogs">
     <div class="the-dialog">
       <div class="the-dialog__container">
         <div class="the-dialog__header">
           {{ heading }}
         </div>
         <div class="the-dialog__body"><slot></slot></div>
-      </div></div
-  ></teleport>
+      </div>
+    </div>
+  </teleport>
 </template>
 
 <script>

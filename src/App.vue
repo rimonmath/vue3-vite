@@ -4,14 +4,12 @@
   </header>
 
   <div class="container">
-    <button @click="hide = true">Hide</button>
-
     <the-comment
       v-model="myComment"
       buttonText="Continue"
       placeholder="Enter Your comment.."
       @click="handleClick"
-      v-if="!hide"
+      @continueClick="handleContinueClick"
     ></the-comment>
     <br />
     <hr />
@@ -20,27 +18,58 @@
     <p>
       {{ myComment }}
     </p>
+
+    <button @click="showNotification">Show Notification</button>
+
+    <the-dialog heading="Are you sure" v-if="showDialog">
+      <p>
+        Are you really want to comment?
+        <br />
+        <button @click="showDialog = false">Yes</button>
+        <button @click="showDialog = false">No</button>
+      </p>
+    </the-dialog>
+
+    <the-notification
+      v-for="(n, i) in notifications"
+      :key="i"
+      :text="n"
+    ></the-notification>
   </div>
 </template>
 
 <script>
 import TheComment from "./TheComment.vue";
+import TheDialog from "./TheDialog.vue";
+import TheNotification from "./TheNotification.vue";
 
 export default {
   data() {
     return {
       msg: "Vue3 Bangla Tutorial",
       myComment: "",
-      hide: false
+      showDialog: false,
+      notifications: []
     };
   },
   methods: {
     handleClick() {
       console.log("Clicked");
+    },
+    handleContinueClick() {
+      this.showDialog = true;
+    },
+    showNotification() {
+      this.notifications.push("You have a new notification");
+      setTimeout(() => {
+        this.notifications.shift();
+      }, 2222);
     }
   },
   components: {
-    TheComment
+    TheComment,
+    TheDialog,
+    TheNotification
   }
 
   // beforeCreate() {
@@ -93,6 +122,9 @@ header h2 {
 
 .container {
   padding: 22px;
+  color: red;
+  font-size: 33px;
+  border: 3px solid green;
 }
 
 button {
