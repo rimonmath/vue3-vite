@@ -4,44 +4,35 @@
   </header>
 
   <div class="container">
-    <the-comment
-      v-model="myComment"
-      buttonText="Continue"
-      placeholder="Enter Your comment.."
-      @click="handleClick"
-      @continueClick="handleContinueClick"
-    ></the-comment>
-    <br />
-    <hr />
-    <br />
+    <div class="tab">
+      <div class="tab__menu">
+        <div
+          v-for="tab in tabs"
+          :key="tab"
+          class="tab__menu-item"
+          :class="{ 'tab__menu-item--active': activeTab === tab }"
+          @click="activeTab = tab"
+        >
+          {{ tab }}
+        </div>
+      </div>
 
-    <p>
-      {{ myComment }}
-    </p>
-
-    <button @click="showNotification">Show Notification</button>
-
-    <the-dialog heading="Are you sure" v-if="showDialog">
-      <p>
-        Are you really want to comment?
+      <div class="tab__content">
         <br />
-        <button @click="showDialog = false">Yes</button>
-        <button @click="showDialog = false">No</button>
-      </p>
-    </the-dialog>
-
-    <the-notification
-      v-for="(n, i) in notifications"
-      :key="i"
-      :text="n"
-    ></the-notification>
+        <!-- <Login v-if="activeTab === 'Login'" /> -->
+        <!--  <Register v-if="activeTab === 'Register'" /> -->
+        <keep-alive>
+          <component :is="activeTab" />
+        </keep-alive>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-import TheComment from "./TheComment.vue";
-import TheDialog from "./TheDialog.vue";
-import TheNotification from "./TheNotification.vue";
+import Login from "./Login.vue";
+import Register from "./Register.vue";
+import ContactDetails from "./ContactDetails.vue";
 
 export default {
   data() {
@@ -49,7 +40,9 @@ export default {
       msg: "Vue3 Bangla Tutorial",
       myComment: "",
       showDialog: false,
-      notifications: []
+      notifications: [],
+      tabs: ["Login", "Register"],
+      activeTab: "Login"
     };
   },
   methods: {
@@ -67,29 +60,10 @@ export default {
     }
   },
   components: {
-    TheComment,
-    TheDialog,
-    TheNotification
+    Login,
+    Register,
+    ContactDetails
   }
-
-  // beforeCreate() {
-  //   console.log("befreCreate");
-  // },
-  // created() {
-  //   console.log("created");
-  // },
-  // beforeMount() {
-  //   console.log("beforeMount");
-  // },
-  // mounted() {
-  //   console.log("mounted");
-  // },
-  // beforeUpdate() {
-  //   console.log("beforeUpdate");
-  // },
-  // updated() {
-  //   console.log("updated");
-  // }
 };
 </script>
 
@@ -132,5 +106,28 @@ button {
 
 .shadowed {
   box-shadow: 0 0 3px 2px #111;
+}
+
+.tab {
+}
+
+.tab__menu {
+  display: flex;
+}
+
+.tab__menu-item {
+  padding: 6px 15px;
+  background-color: #dbdbdb;
+  cursor: pointer;
+}
+
+.tab__menu-item--active {
+  color: #fff;
+  background-color: rgb(27, 104, 192);
+}
+
+input {
+  padding: 5px 11px;
+  margin-bottom: 11px;
 }
 </style>
