@@ -122,9 +122,6 @@ header h2 {
 
 .container {
   padding: 22px;
-  color: red;
-  font-size: 33px;
-  border: 3px solid green;
 }
 
 button {
