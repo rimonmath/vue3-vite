@@ -9,20 +9,8 @@
 
 <script>
 export default {
-  props: {
-    name: {
-      type: String
-    },
-    websiteAddress: {
-      type: String,
-      required: false,
-      default: "http://yourwebsite.com"
-    },
-    address: {
-      type: String,
-      required: true
-    }
-  },
+  inject: ["name", "websiteAddress", "address"],
+  props: {},
   data() {
     return {};
   }

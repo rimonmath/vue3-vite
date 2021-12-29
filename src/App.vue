@@ -41,8 +41,11 @@ export default {
       myComment: "",
       showDialog: false,
       notifications: [],
-      tabs: ["Login", "Register"],
-      activeTab: "Login"
+      tabs: ["Login", "Register", "ContactDetails"],
+      activeTab: "Login",
+      name: "Mamunur Rashid",
+      website: "https://rimonbd.com",
+      address: "Dhaka"
     };
   },
   methods: {
@@ -58,6 +61,13 @@ export default {
         this.notifications.shift();
       }, 2222);
     }
+  },
+  provide() {
+    return {
+      name: this.name,
+      websiteAddress: this.website,
+      address: this.address
+    };
   },
   components: {
     Login,
