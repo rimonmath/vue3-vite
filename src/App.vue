@@ -4,75 +4,40 @@
   </header>
 
   <div class="container">
-    <div class="tab">
-      <div class="tab__menu">
-        <div
-          v-for="tab in tabs"
-          :key="tab"
-          class="tab__menu-item"
-          :class="{ 'tab__menu-item--active': activeTab === tab }"
-          @click="activeTab = tab"
-        >
-          {{ tab }}
-        </div>
-      </div>
-
-      <div class="tab__content">
-        <br />
-        <!-- <Login v-if="activeTab === 'Login'" /> -->
-        <!--  <Register v-if="activeTab === 'Register'" /> -->
-        <keep-alive>
-          <component :is="activeTab" />
-        </keep-alive>
-      </div>
-    </div>
+    <input
+      type="text"
+      placeholder="Enter your name"
+      v-model="name"
+      ref="nameInput"
+    />
+    <the-comment
+      v-model="comment"
+      placeholder="Enter comment.."
+      ref="commentInput"
+    ></the-comment>
   </div>
 </template>
 
 <script>
-import Login from "./Login.vue";
-import Register from "./Register.vue";
-import ContactDetails from "./ContactDetails.vue";
+import TheComment from "./TheComment.vue";
 
 export default {
   data() {
     return {
       msg: "Vue3 Bangla Tutorial",
-      myComment: "",
-      showDialog: false,
-      notifications: [],
-      tabs: ["Login", "Register", "ContactDetails"],
-      activeTab: "Login",
-      name: "Mamunur Rashid",
-      website: "https://rimonbd.com",
-      address: "Dhaka"
+      name: "",
+      comment: ""
     };
   },
-  methods: {
-    handleClick() {
-      console.log("Clicked");
-    },
-    handleContinueClick() {
-      this.showDialog = true;
-    },
-    showNotification() {
-      this.notifications.push("You have a new notification");
-      setTimeout(() => {
-        this.notifications.shift();
-      }, 2222);
-    }
+  created() {
+    console.dir(this.$refs.commentInput);
   },
-  provide() {
-    return {
-      name: this.name,
-      websiteAddress: this.website,
-      address: this.address
-    };
+  mounted() {
+    console.dir(this.$refs.commentInput);
   },
+  methods: {},
   components: {
-    Login,
-    Register,
-    ContactDetails
+    TheComment
   }
 };
 </script>
