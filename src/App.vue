@@ -4,40 +4,82 @@
   </header>
 
   <div class="container">
+    <h1>New User Registration</h1>
+    <label>Full Name</label> <br />
     <input
       type="text"
-      placeholder="Enter your name"
-      v-model="name"
-      ref="nameInput"
+      placeholder="Enter your Full Name"
+      v-model="formData.fullName"
     />
-    <the-comment
-      v-model="comment"
-      placeholder="Enter comment.."
-      ref="commentInput"
-    ></the-comment>
+    <br />
+
+    <label>About You</label> <br />
+    <textarea
+      v-model="formData.aboutYou"
+      placeholder="Write something about you..."
+    ></textarea>
+
+    <br />
+    <label>Gender</label> <br />
+
+    <label>
+      <input type="radio" name="gender" value="M" v-model="formData.gender" />
+      Male
+    </label>
+    <label>
+      <input
+        type="radio"
+        name="gender"
+        class="ml-2"
+        checked="checked"
+        value="F"
+        v-model="formData.gender"
+      />
+      Female
+    </label>
+    <label>
+      <input
+        type="radio"
+        name="gender"
+        class="ml-2"
+        value="O"
+        v-model="formData.gender"
+      />
+      Other
+    </label>
+
+    <hr />
+
+    <div v-for="(value, key) in formData" :key="key">
+      <strong>{{ key }}: </strong> {{ value }}
+    </div>
   </div>
 </template>
 
 <script>
-import TheComment from "./TheComment.vue";
+// import TheComment from "./TheComment.vue";
 
 export default {
   data() {
     return {
       msg: "Vue3 Bangla Tutorial",
       name: "",
-      comment: ""
+      formData: {
+        fullName: "Md. ",
+        aboutYou: "",
+        gender: "O"
+      }
     };
   },
   created() {
-    console.dir(this.$refs.commentInput);
+    // console.dir(this.$refs.commentInput);
   },
   mounted() {
-    console.dir(this.$refs.commentInput);
+    // console.dir(this.$refs.commentInput);
   },
   methods: {},
   components: {
-    TheComment
+    // TheComment
   }
 };
 </script>
@@ -104,5 +146,15 @@ button {
 input {
   padding: 5px 11px;
   margin-bottom: 11px;
+}
+
+textarea {
+  padding: 5px 11px;
+  margin-bottom: 11px;
+  width: 100%;
+}
+
+.ml-2 {
+  margin-left: 11px;
 }
 </style>
