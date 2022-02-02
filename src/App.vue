@@ -48,6 +48,32 @@
       Other
     </label>
 
+    <br />
+    <br />
+    <label>Language</label>
+    <br />
+    <select v-model="formData.language">
+      <option value="">--Select One--</option>
+      <option value="B">Bangla</option>
+      <option value="E">English</option>
+    </select>
+
+    <br />
+    <br />
+
+    <label>Skills</label>
+    <br />
+    <select multiple v-model="formData.skils">
+      <option>HTML</option>
+      <option>CSS</option>
+      <option>JavaScript</option>
+      <option>Python</option>
+      <option>Swift</option>
+    </select>
+
+    <br />
+    <br />
+
     <hr />
 
     <div v-for="(value, key) in formData" :key="key">
@@ -67,7 +93,9 @@ export default {
       formData: {
         fullName: "Md. ",
         aboutYou: "",
-        gender: "O"
+        gender: "O",
+        language: "",
+        skils: []
       }
     };
   },
