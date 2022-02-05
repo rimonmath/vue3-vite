@@ -73,6 +73,31 @@
 
     <br />
     <br />
+    <label>Social Accounts</label>
+    <br />
+    <label>
+      <input type="checkbox" v-model="formData.socialAccounts" value="fb" />
+      Facebook
+    </label>
+    <label>
+      <input type="checkbox" v-model="formData.socialAccounts" value="tw" />
+      Twitter
+    </label>
+    <label>
+      <input type="checkbox" v-model="formData.socialAccounts" value="ln" />
+      Linkedin
+    </label>
+    <label>
+      <input type="checkbox" v-model="formData.socialAccounts" value="in" />
+      Instagram
+    </label>
+
+    <br /><br />
+    <label>Agreement</label> <br />
+    <label>
+      <input type="checkbox" v-model="formData.agreed" /> I agree to the Terms
+      and Services
+    </label>
 
     <hr />
 
@@ -95,7 +120,9 @@ export default {
         aboutYou: "",
         gender: "O",
         language: "",
-        skils: []
+        skils: [],
+        agreed: false,
+        socialAccounts: []
       }
     };
   },
